@@ -1,4 +1,4 @@
-# Anatomy of a Web Component: Exercises
+# Adding Custom Attributes To Your Components: Exercises
 
 The companion repo to the corresponding lesson from [Component Odyssey](https://component-odyssey.com).
 
@@ -6,7 +6,7 @@ The companion repo to the corresponding lesson from [Component Odyssey](https://
 
 Clone this repo using:
 
-`git clone git@github.com:Component-Odyssey/the-anatomy-of-a-web-component-exercises.git`
+`git clone git@github.com:Component-Odyssey/adding-custom-attributes-to-your-component-exercises.git`
 
 Open the folder in VSCode
 
