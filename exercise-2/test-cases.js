@@ -29,7 +29,7 @@ test3El.test(() => {
 
 const test4El = document.getElementById('test-4');
 test4El.test(() => {
-  const component = document.querySelectorAll('album-art')[3];
+  const component = document.querySelectorAll('album-art')[4];
   const shadowRoot = component.shadowRoot;
 
   const imgEl = shadowRoot.querySelector('img');

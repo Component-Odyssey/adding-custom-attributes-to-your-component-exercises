@@ -93,13 +93,34 @@
         <p>959595.wav</p>
       </div>
       <div>
-        <img class="square-aspect-ratio" src="https://component-odyssey.s3.amazonaws.com/sable-dirge.png"
+        <img class="square-aspect-ratio" src="https://component-odyssey.s3.amazonaws.com/sable-dirge-craiyon.png"
           alt="Sable album cover" />
         <h3>Sable</h3>
         <p>Dirge</p>
       </div>
     </div>
   </main>
+
+  <script type="module">
+    class AlbumArt extends HTMLElement {
+      constructor() {
+        super();
+
+        const shadowRoot = this.attachShadow({ mode: 'open' });
+
+        const template = document.getElementById('album-art-template');
+        const templateContent = template.content;
+
+        this.shadowRoot.appendChild(templateContent.cloneNode(true));
+      }
+
+      connectedCallback() {
+        // Your code here
+      }
+    }
+
+    customElements.define('album-art', AlbumArt);
+  </script>
 
   <script type="module" src="./test-cases.js"></script>
 </body>

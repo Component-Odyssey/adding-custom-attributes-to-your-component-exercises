@@ -27,7 +27,7 @@
       @import url('./styles.css');
     </style>
     <div>
-      <img class="square-aspect-ratio" src="" alt="" />
+      <img class="square-aspect-ratio" />
       <h3></h3>
       <p></p>
     </div>
@@ -98,7 +98,7 @@
         <p>959595.wav</p>
       </div>
       <div>
-        <img class="square-aspect-ratio" src="https://component-odyssey.s3.amazonaws.com/sable-dirge.png"
+        <img class="square-aspect-ratio" src="https://component-odyssey.s3.amazonaws.com/sable-dirge-craiyon.png"
           alt="Sable album cover" />
         <h3>Sable</h3>
         <p>Dirge</p>
@@ -107,7 +107,31 @@
   </main>
 
   <script>
-    // Create your component here
+    class AlbumArt extends HTMLElement {
+      constructor() {
+        super();
+
+        const shadowRoot = this.attachShadow({ mode: 'open' });
+
+        const template = document.getElementById('album-art-template');
+        const templateContent = template.content;
+
+        this.shadowRoot.appendChild(templateContent.cloneNode(true));
+      }
+
+      connectedCallback() {
+        const img = this.shadowRoot.querySelector('img');
+        const artistName = this.shadowRoot.querySelector('h3');
+        const albumName = this.shadowRoot.querySelector('p');
+
+        img.src = this.getAttribute('img-src');
+        img.alt = this.getAttribute('alt');
+        artistName.textContent = this.getAttribute('artist-name');
+        albumName.textContent = this.getAttribute('album-name');
+      }
+    }
+
+    customElements.define('album-art', AlbumArt);
   </script>
 
   <script type="module" src="./test-cases.js"></script>
