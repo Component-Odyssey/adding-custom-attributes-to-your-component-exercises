@@ -3,24 +3,35 @@ import 'odyssey-test-utils/test-case.js';
 
 const test1El = document.getElementById('test-1');
 test1El.test(() => {
-  const template = document.getElementById('album-art-template');
-  return Boolean(template)
+  const component = document.querySelectorAll('album-art')[3];
+
+  const hasImg = component.hasAttribute('img-src')
+  const hasAlt = component.hasAttribute('alt')
+  const hasArtistName = component.hasAttribute('artist-name')
+  const hasAlbumName = component.hasAttribute('album-name')
+
+  return hasImg && hasAlt && hasArtistName && hasAlbumName;
 })
 
 const test2El = document.getElementById('test-2');
 test2El.test(() => {
-  const template = document.getElementById('album-art-template');
+  const component = document.querySelectorAll('album-art')[3];
+  const shadowRoot = component.shadowRoot;
 
-  if (!template) return false;
+  const imgEl = shadowRoot.querySelector('img');
+  const artistNameEl = shadowRoot.querySelector('h3');
+  const albumNameEl = shadowRoot.querySelector('p');
 
-  const content = template.content;
-  const hasDiv = content.children.length == 1 && content.children[0].tagName == 'DIV';
+  const imgSrc = imgEl.getAttribute('src');
+  const imgAlt = imgEl.getAttribute('alt');
+  const artistName = artistNameEl.textContent;
+  const albumName = albumNameEl.textContent;
 
-  if (!hasDiv) return false
+  const isValidImgSrc = imgSrc === 'https://component-odyssey.s3.amazonaws.com/w95-959595.wav.png'
+  const isValidImgAlt = imgAlt === '95 album cover'
+  const isValidArtistName = artistName === '9 5'
+  const isValidAlbumName = albumName === '959595.wav'
 
-  const divEl = content.children[0];
-  const hasThreeChildren = divEl.children.length == 3;
 
-  if (!hasThreeChildren) return false
-  return divEl.children[0].tagName == 'IMG' && divEl.children[1].tagName == 'H3' && divEl.children[2].tagName == 'P';
+  return isValidImgSrc && isValidImgAlt && isValidArtistName && isValidAlbumName;
 })

@@ -14,11 +14,22 @@
 
 <body>
   <test-case-wrapper>
-    <test-case id="test-1" description="Template with id='album-art-template' exists"></test-case>
-    <test-case id="test-2" description="Template HTML structure matches album art HTML structure"></test-case>
+    <test-case id="test-1" description="Template should not contain album details"></test-case>
+    <test-case id="test-2" description="Album details should be provided album-art element"></test-case>
   </test-case-wrapper>
 
-  <!-- Add your template element here -->
+  <template id="album-art-template">
+    <style>
+      @import url('./reset.css');
+      @import url('./styles.css');
+    </style>
+    <div>
+      <img class="square-aspect-ratio" src="https://component-odyssey.s3.amazonaws.com/romy-melny-nature.jpg"
+        alt="Romy Melny album cover" />
+      <h3>Romy Melny</h3>
+      <p>Nature</p>
+    </div>
+  </template>
 
   <header class="flex-row space-between bg-accent padding-h-4 padding-v-2">
     <h1 class="title">Album Odyssey</h1>
@@ -55,6 +66,7 @@
     <hr />
 
     <div class="padding-v-2 grid">
+      <album-art></album-art>
       <div>
         <img class="square-aspect-ratio" src="https://component-odyssey.s3.amazonaws.com/evelyn-hunter-ophelia.jpg"
           alt="Evelyn Hunter album cover" />
@@ -73,12 +85,6 @@
           alt="Jakalya Toney album cover" />
         <h3>Jakayla Toney</h3>
         <p>Self titled</p>
-      </div>
-      <div>
-        <img class="square-aspect-ratio" src="https://component-odyssey.s3.amazonaws.com/romy-melny-nature.jpg"
-          alt="Romy Melny album cover" />
-        <h3>Romy Melny</h3>
-        <p>Nature</p>
       </div>
       <div>
         <img class="square-aspect-ratio" src="https://component-odyssey.s3.amazonaws.com/w95-959595.wav.png"
