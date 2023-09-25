@@ -23,8 +23,24 @@ test1El.test(() => {
 const test2El = document.getElementById('test-2');
 test2El.test(() => {
   const component = document.querySelectorAll('album-art')[0];
-  const shadowRoot = component.shadowRoot;
 
+  const imgSrc = component.getAttribute('img-src')
+  const imgAlt = component.getAttribute('alt')
+  const artistName = component.getAttribute('artist-name')
+  const albumName = component.getAttribute('album-name')
+
+  const isValidImgSrc = imgSrc === 'https://component-odyssey.s3.amazonaws.com/romy-melny-nature.jpg'
+  const isValidImgAlt = imgAlt === 'Romy Melny album cover'
+  const isValidArtistName = artistName === 'Romy Melny'
+  const isValidAlbumName = albumName === 'Nature'
+
+  return isValidImgSrc && isValidImgAlt && isValidArtistName && isValidAlbumName;
+})
+
+const test3El = document.getElementById('test-3');
+test3El.test(() => {
+  const component = document.querySelectorAll('album-art')[0];
+  const shadowRoot = component.shadowRoot;
   const imgEl = shadowRoot.querySelector('img');
   const artistNameEl = shadowRoot.querySelector('h3');
   const albumNameEl = shadowRoot.querySelector('p');
